@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Rating</title>
+    <link href="//fonts.googleapis.com/earlyaccess/notosanstc.css" rel="stylesheet" />
+    <style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Noto Sans TC', sans-serif;
+        font-weight: 300;
+    }
+
+    #ratingBox {
+        width: 600px;
+        height: 600px;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -305px;
+        margin-left: -305px;
+
+        border: 5px solid black;
+
+        text-align: center;
+        font-size: 0;
+    }
+
+    .starBox {
+        display: inline-block;
+
+        margin: 120px 0;
+
+        cursor: pointer;
+    }
+
+    .star {
+        padding: 10px;
+    }
+
+    #status {
+        margin: 0;
+
+        font-size: 60px;
+    }
+
+    </style>
+    <script>
+        var starOnIcon = '../../res/starOn.png', starOffIcon = '../../res/starOff.png';
+
+        var starBoxes = document.getElementsByClassName("starBox");
+        var stars = document.getElementsByClassName("star");
+
+        var finalStars = '';
+
+        function overStar() {
+            var nthStar;
+            switch (this.id) {
+                case "A": nthStar = 1; break;
+                case "B": nthStar = 2; break;
+                case "C": nthStar = 3; break;
+                case "D": nthStar = 4; break;
+                case "E": nthStar = 5; break;
+            }
+
+            for (var i = 0; i <= nthStar - 1; i++) {
+                stars[i].src = starOnIcon;
+            }
+            for (var i = nthStar; i < 5; i++) {
+                stars[i].src = starOffIcon;
+            }
+
+            document.getElementById("status").innerHTML = "評分中 ... " + nthStar + " 顆星";
+        }
+
+        function offStar() {
+            if (finalStars == '') {
+                for (var i = 0; i < 5; i++) {
+                    stars[i].src = starOffIcon;
+                }
+                document.getElementById("status").innerHTML = "請給分";
+            } else {
+                for (var i = 0; i <= finalStars - 1; i++) {
+                    stars[i].src = starOnIcon;
+                }
+                for (var i = finalStars; i < 5; i++) {
+                    stars[i].src = starOffIcon;
+                }
+                document.getElementById("status").innerHTML = "你給 " + finalStars + " 顆星！";
+            }
+        }
+
+        function clickStar() {
+            switch (this.id) {
+                case "A": finalStars = 1; break;
+                case "B": finalStars = 2; break;
+                case "C": finalStars = 3; break;
+                case "D": finalStars = 4; break;
+                case "E": finalStars = 5; break;
+            }
+            document.getElementById("status").innerHTML = "你給 " + finalStars + " 顆星！";
+        }
+
+        window.onload = function () {
+            for (var i = 0; i < starBoxes.length; i++) {
+                starBoxes[i].addEventListener("mouseover", overStar);
+                starBoxes[i].addEventListener("mouseout", offStar);
+                starBoxes[i].addEventListener("click", clickStar);
+            }
+
+            for (var i = 0; i < stars.length; i++) {
+                stars[i].src = starOffIcon;
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div id="ratingBox">
+        <div class="starBox" id="A"><img class="star" width="100" height="100" /></div>
+        <div class="starBox" id="B"><img class="star" width="100" height="100" /></div>
+        <div class="starBox" id="C"><img class="star" width="100" height="100" /></div>
+        <div class="starBox" id="D"><img class="star" width="100" height="100" /></div>
+        <div class="starBox" id="E"><img class="star" width="100" height="100" /></div>
+        <div>
+            <span id="status">請給分</span>
+        </div>
+    </div>
+</body>
+</html>

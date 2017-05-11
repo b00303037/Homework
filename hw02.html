@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Form Check</title>
+    <style>
+
+	fieldset {
+		width: 500px;
+
+		border: 1px solid #008000;
+		border-radius: 10px;
+	}
+
+	.boxs {
+		margin: 5px 10px;
+	}
+		.inputBox {
+			padding: 15px 10px;
+
+			border-bottom: 1px solid #B2B2B2;
+		}
+
+			.inputBox img {
+				width: 13px;
+				height: 13px;
+			}
+
+			.correctInput {}
+
+			.wrongInput {
+				color: red;
+				font-size: 13px;
+				font-style: italic;
+			}
+
+			.constrain {
+				margin: 0;
+
+				font-size: 13px;
+				color: #929292;
+			}
+
+		.submitBox {
+			padding-top: 10px;
+			text-align: center;
+		}
+
+	</style>
+	<script>
+
+	    var correctIconURL = "'../../res/正確.png'";
+	    var wrongIconURL = "'../../res/錯誤.png'";
+
+	    function checkName() {
+	        var nameValue = document.getElementById("nameInput").value;
+	        document.getElementById("nameCheckReslut").innerHTML = "<img src = " + correctIconURL + "/>正確";
+	        document.getElementById("nameCheckReslut").classList.add("wrongInput");
+
+	        if (nameValue.length == 0) {
+	            document.getElementById("nameCheckReslut").innerHTML = "<img src = " + wrongIconURL + "/>姓名不可為空白";
+	        } else if (nameValue.length < 2) {
+	            document.getElementById("nameCheckReslut").innerHTML = "<img src = " + wrongIconURL + "/>姓名至少兩個字以上";
+	        } else {
+	            var error = false;
+	            for (var i = 0; i < nameValue.length; i++) {
+	                if (nameValue.charCodeAt(i) < 0x4E00 || nameValue.charCodeAt(i) > 0x9FBB) {
+	                    document.getElementById("nameCheckReslut").innerHTML = "<img src = " + wrongIconURL + "/>姓名必須全部為中文字";
+	                    error = true;
+	                    break;
+	                }
+	            }
+	            if (!error) {
+	                document.getElementById("nameCheckReslut").classList.remove("wrongInput");
+	            }
+	        }
+	    }
+
+	    function checkPassword() {
+	        var passwordValue = document.getElementById("passwordInput").value;
+	        document.getElementById("passwordCheckReslut").innerHTML = "<img src = " + correctIconURL + "/>正確";
+	        document.getElementById("passwordCheckReslut").classList.add("wrongInput");
+	        // var regExp = /^(?=.*[0-9])(?=.*[A-Za-z])(?=.*[!@#\$%\^&\*])(?!.*[\u4e00-\u9fa5])(?!.*[\s]).{6,}$/;
+	        var regExpN = /[0-9]/,
+                regExpL = /[a-z]/i,
+                regExpC = /[!@#$%^&*]/;
+
+	        if (passwordValue.length == 0) {
+	            document.getElementById("passwordCheckReslut").innerHTML = "<img src = " + wrongIconURL + "/>密碼不可為空白";
+	        } else if (passwordValue.length < 6) {
+	            document.getElementById("passwordCheckReslut").innerHTML = "<img src = " + wrongIconURL + "/>密碼至少6個字";
+	        } else {
+	            // if (regExp.test(passwordValue)) {
+	            if (passwordValue.match(regExpN) != null && passwordValue.match(regExpL) != null && passwordValue.match(regExpC) != null) {
+	                document.getElementById("passwordCheckReslut").classList.remove("wrongInput");
+	            } else {
+	                document.getElementById("passwordCheckReslut").innerHTML = "<img src = " + wrongIconURL + "/>密碼格式錯誤";
+	            }
+	        }
+	    }
+
+	    function checkDate() {
+	        var dateValue = document.getElementById("dateInput").value;
+	        document.getElementById("dateCheckReslut").innerHTML = "<img src = " + correctIconURL + "/>正確";
+	        document.getElementById("dateCheckReslut").classList.add("wrongInput");
+	        var regExp = /[0-9]{4}\/[0-9]{1,2}\/[0-9]{1,2}/;
+	        var date = new Date(dateValue);
+
+	        var dayOfDate = date.getDate();
+	        var dateValues = dateValue.split('/');
+	        var dayOfDateValues = dateValues[2];
+
+	        if (dateValue.length == 0) {
+	            document.getElementById("dateCheckReslut").innerHTML = "<img src = " + wrongIconURL + "/>日期不可為空白";
+	        } else if (!regExp.test(dateValue) || date == "Invalid Date" || dayOfDate != dayOfDateValues) {
+	            document.getElementById("dateCheckReslut").innerHTML = "<img src = " + wrongIconURL + "/>格式錯誤";
+	        } else {
+	            document.getElementById("dateCheckReslut").classList.remove("wrongInput");
+	        }
+	    }
+
+	    function clearForm() {
+	        document.getElementById("nameCheckReslut").innerHTML = "";
+	        document.getElementById("passwordCheckReslut").innerHTML = "";
+	        document.getElementById("dateCheckReslut").innerHTML = "";
+	    }
+
+	    window.onload = function () {
+	        document.getElementById("nameInput").addEventListener("blur", checkName);
+	        document.getElementById("passwordInput").addEventListener("blur", checkPassword);
+	        document.getElementById("dateInput").addEventListener("blur", checkDate);
+	        document.getElementById("reset").addEventListener("click", clearForm);
+	    }
+	</script>
+
+</head>
+<body>
+	<form>
+	<fieldset>
+	<legend>Form Check</legend>
+
+	<div class = "boxs">
+		<div class = "inputBox">
+			<label for = "nameInput">姓名:</label>
+			<input type = "text" id = "nameInput" name = "name" placeholder="請輸入姓名" />
+			<span id = "nameCheckReslut"></span>
+			<p class="constrain">(1.不可空白，2.至少兩個字以上，3.必須全部為中文字)</p>
+		</div>
+
+		<div class = "inputBox">
+			<label for = "passwordInput">密碼:</label>
+			<input type = "password" id = "passwordInput" name = "password" placeholder="請輸入密碼" />
+			<span id = "passwordCheckReslut"></span>
+			<p class="constrain">(1.不可空白，2.至少6個字且必須包含英文字母、數字、特殊字元[!@#$%^&amp;*])</p>
+		</div>
+
+		<div class = "inputBox">
+			<label for = "dateInput">日期:</label>
+			<input type = "text" id = "dateInput" name = "date" maxlength="10" placeholder="ex:2000/2/29" />
+			<span id = "dateCheckReslut"></span>
+			<p class="constrain">格式:西元年/月/日 yyyy/MM/dd</p>
+		</div>
+
+		<div class = "submitBox">
+			<input type = "submit" value = "送出" />
+			<input type = "reset" id = "reset" value = "清除" />
+		</div>
+	</div>
+
+	</fieldset>
+	</form>
+</body>
+</html>

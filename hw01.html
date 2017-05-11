@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>99Table</title>
+    <script>
+        var i = 2, j = 1;
+
+        document.write("<table><tr>");
+        
+        for (i = 2; i < 10; i++) {
+            document.write("<td>");
+
+            for (j = 1; j < 10; j++) {
+                document.write(i + "*" + j + "=" + i*j + "<br>");
+            }
+            j = 1;
+            document.write("</td>");
+        }
+
+        document.write("</tr></table>");
+
+    </script>
+    <style>
+
+        table {
+            border: 3px solid #00BBFF;
+            border-collapse: collapse;
+            background-color: #BBFFEE;
+
+            margin: auto;
+        }
+
+        td {
+            border: 2px solid #00BBFF;
+            color: #FF0000;
+            padding: 5px;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+
+
+</body>
+</html>
