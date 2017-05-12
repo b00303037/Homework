@@ -68,15 +68,12 @@
             }
     </style>
     <script>
-
         var boardX, boardY;
         var elementX, elementY;
 
         function getBoardXY(e) {
             e = e || window.event;
             boardX = e.offsetX, boardY = e.offsetY;
-
-            console.log("x:" + boardX + ", y: " + boardY);
         }
 
         function dragstartHandler(e) {
@@ -95,7 +92,7 @@
             var divElement = document.createElement("div");
             e.currentTarget.appendChild(divElement);
 
-            divElement.className = "circle";
+            divElement.className = elementId;
             divElement.style.position = "absolute";
             divElement.style.top = (boardY - elementY + 150) + "px";
             divElement.style.left = (boardX - elementX) + "px";
@@ -109,14 +106,11 @@
             document.getElementById("circle").draggable = "true";
             document.getElementById("circle").addEventListener("dragstart", dragstartHandler);
 
-
-
             document.getElementById("square").draggable = "true";
+            document.getElementById("square").addEventListener("dragstart", dragstartHandler);
 
             document.getElementById("board").addEventListener("dragover", function (e) { e.preventDefault() });
         }
-
-
     </script>
 
 </head>
