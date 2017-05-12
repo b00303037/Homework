@@ -7,8 +7,6 @@
     <style>
     * {
         box-sizing: border-box;
-        font-family: 'Noto Sans TC', sans-serif;
-        font-weight: 300;
     }
 
     #ratingBox {
@@ -42,27 +40,25 @@
     #status {
         margin: 0;
 
+        font-family: 'Noto Sans TC', sans-serif;
         font-size: 60px;
+        font-weight: 300;
     }
 
     </style>
     <script>
-        var starOnIcon = 'res/starOn.png', starOffIcon = 'res/starOff.png';
+        // set img src
+        var starOnIcon = '/res/starOn.png', starOffIcon = 'res/starOff.png';
 
+        // get divs
         var starBoxes = document.getElementsByClassName("starBox");
+        // get imgs
         var stars = document.getElementsByClassName("star");
 
-        var finalStars = '';
+        var finalStars = 0;
 
-        function overStar() {
-            var nthStar;
-            switch (this.id) {
-                case "A": nthStar = 1; break;
-                case "B": nthStar = 2; break;
-                case "C": nthStar = 3; break;
-                case "D": nthStar = 4; break;
-                case "E": nthStar = 5; break;
-            }
+        function overStar(imgn) {
+            var nthStar = parseInt(imgn.substr(3));
 
             for (var i = 0; i <= nthStar - 1; i++) {
                 stars[i].src = starOnIcon;
@@ -75,7 +71,7 @@
         }
 
         function offStar() {
-            if (finalStars == '') {
+            if (finalStars == 0) {
                 for (var i = 0; i < 5; i++) {
                     stars[i].src = starOffIcon;
                 }
@@ -91,22 +87,17 @@
             }
         }
 
-        function clickStar() {
-            switch (this.id) {
-                case "A": finalStars = 1; break;
-                case "B": finalStars = 2; break;
-                case "C": finalStars = 3; break;
-                case "D": finalStars = 4; break;
-                case "E": finalStars = 5; break;
-            }
+        function clickStar(imgn) {
+            finalStars = parseInt(imgn.substr(3));
+
             document.getElementById("status").innerHTML = "你給 " + finalStars + " 顆星！";
         }
 
         window.onload = function () {
             for (var i = 0; i < starBoxes.length; i++) {
-                starBoxes[i].addEventListener("mouseover", overStar);
+                starBoxes[i].addEventListener("mouseover", function () { overStar(this.id) });
                 starBoxes[i].addEventListener("mouseout", offStar);
-                starBoxes[i].addEventListener("click", clickStar);
+                starBoxes[i].addEventListener("click", function () { clickStar(this.id) });
             }
 
             for (var i = 0; i < stars.length; i++) {
@@ -118,11 +109,11 @@
 </head>
 <body>
     <div id="ratingBox">
-        <div class="starBox" id="A"><img class="star" width="100" height="100" /></div>
-        <div class="starBox" id="B"><img class="star" width="100" height="100" /></div>
-        <div class="starBox" id="C"><img class="star" width="100" height="100" /></div>
-        <div class="starBox" id="D"><img class="star" width="100" height="100" /></div>
-        <div class="starBox" id="E"><img class="star" width="100" height="100" /></div>
+        <div class="starBox" id="img1"><img class="star" width="100" height="100" /></div>
+        <div class="starBox" id="img2"><img class="star" width="100" height="100" /></div>
+        <div class="starBox" id="img3"><img class="star" width="100" height="100" /></div>
+        <div class="starBox" id="img4"><img class="star" width="100" height="100" /></div>
+        <div class="starBox" id="img5"><img class="star" width="100" height="100" /></div>
         <div>
             <span id="status">請給分</span>
         </div>
