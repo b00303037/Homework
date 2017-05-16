@@ -15,6 +15,9 @@
 		
 		function scroll(e) {
 			e = event || window.event;
+            var pageN = "page" + e.target.id.substr(5);
+            
+            document.getElementById(pageN).scrollIntoView({ behavior: "smooth" });
 		}
 
 		window.onload = function() {
