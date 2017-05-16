@@ -1,0 +1,216 @@
+﻿/* index */
+*, body {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+}
+
+#pageBox {
+    width: 100%;
+
+    overflow: auto;
+}
+
+    #pageBox .page {
+        width: 100%;
+		height: 988px;
+    }
+
+    #pageBox .page:nth-child(1) {
+        background-color: #000;
+    }
+
+    #pageBox .page:nth-child(2n + 2) {
+        background-color: #DDD;
+    }
+
+    #pageBox .page:nth-child(2n + 3) {
+        background-color: #BBB;
+    }
+
+        #pageBox .page .codeBox {
+            width: 30%;
+            height: 988px;
+
+            display: inline-block;
+
+            background-color: #CCC;
+        }
+
+        #pageBox .page .codeBox:nth-child(2n+1) {
+            float: left;
+        }
+
+        #pageBox .page .codeBox:nth-child(2n) {
+            float: right;
+        }
+        
+
+            #pageBox .page .codeBox .codeIndex {
+                width: 33.3333%;
+                height: 66px;
+
+                display: inline-block;
+                margin-top: 88px;
+
+                text-align: center;
+                color: #FFF;
+                font: 400 33px/66px Poppins, sans-serif;
+            }
+
+            .html {
+                background-color: #FF7473;
+            }
+
+            .css {
+                background-color: #47B8E0;
+            }
+
+            .javascript {
+                background-color: #FFC952;
+            }
+
+            #pageBox .page .codeBox .code {
+                width: auto;
+                height: 790px;
+
+                margin: 22px;
+
+                background-color: #FFFFFF;
+            }
+
+        #pageBox .page .resultBox {
+            width: 70%;
+            height: 988px;
+
+            display: inline-block;
+            position: relative;
+        }
+
+            #pageBox .page .resultBox .result {
+                width: 640px;
+                height: 640px;
+
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -320px;
+                margin-left: -320px;
+
+                background-color: #FFBBD6;
+            }
+
+    #navBox {
+        width: 100%;
+	    height: 88px;
+
+	    position: fixed;
+	    top: 0;
+
+	    background-color: #FFFFFF;
+    }
+
+        #navBox #headerBox {
+            height: 88px;
+
+			margin: 0 44px;
+
+			display: inline-block;
+			background-color: #FFFFFF;
+        }
+
+            #navBox #headerBox h1 {
+                margin: 11px 0;
+
+                color: #000000;
+				font: 700 55px/66px Poppins, sans-serif;
+            }
+
+        #navBox #indexBox {
+            height: 88px;
+
+            margin: 0 33px;
+            float: right;
+
+            display: inline-block;
+        }
+
+            #navBox #indexBox ul {
+                height: 88px;
+            }
+
+                .index {
+                    width: 66px;
+
+                    display: inline-block;
+                    margin: 11px;
+
+                    text-align: center;
+                    font: 400 55px/66px Poppins, sans-serif;
+                    color: #666666;
+
+                    cursor: pointer;
+                }
+
+                .index:hover {
+                    color: #000000;
+				    border-bottom: 4px solid #FA3;
+                }
+
+                .indexOn {
+                    width: 66px;
+
+                    display: inline-block;
+                    margin: 11px;
+
+                    text-align: center;
+                    font: 400 55px/66px Poppins, sans-serif;
+                    color: #000000;
+                    border-bottom: 4px solid #FFAA33;
+
+                    cursor: pointer;
+                }
+
+/* hw01 */
+
+
+
+
+
+/* hw02 */
+
+
+
+
+
+/* hw03 */
+
+
+
+
+/* hw04 */
+
+
+
+
+
+/* hw05 */
+#hw05 * {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 100;
+}
+
+        #hw05 .result h1 {
+            font-size: 66px;
+        }
+
+        #info {
+            font-size: 33px;
+        }
+
+    #formBox, #infoBox {
+        width: 640px;
+        height: 320px;
+
+        padding: 0 44px;
+    }
