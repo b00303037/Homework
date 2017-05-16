@@ -130,7 +130,7 @@
 
         function control(c) {
             numberButtons[showingPoster].classList.remove("numberButtonOn");
-            showingPoster = (showingPoster + QofPosters + c) % 5;
+            showingPoster = (showingPoster + QofPosters + c) % QofPosters;
             var numberButtonOnId = "poster".concat(showingPoster + 1);
             document.getElementById(numberButtonOnId).classList.add("numberButtonOn");
 
