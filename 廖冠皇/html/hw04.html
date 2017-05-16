@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Carousel</title>
+    <link href="https://fonts.googleapis.com/earlyaccess/notosanstc.css" rel="stylesheet" />
+    <style>
+        #carouselBox {
+            width: 640px;
+            height: 640px;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -320px;
+            margin-left: -320px;
+
+            text-align: center;
+        }
+
+        #poster {
+            margin-top: 0;
+        }
+
+        .controlButton {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+
+            position: absolute;
+
+            text-align: center;
+
+            background-color: rgba(255, 255, 255, 0.66);
+        }
+
+            .controlButton:hover {
+                background-color: rgba(255, 255, 255, 1);
+                cursor: pointer;
+            }
+
+        #previous {
+            top: 275px;
+            left: 47px;
+        }
+
+        #next {
+            top: 275px;
+            right: 47px;
+        }
+
+        .numberButton {
+            width: 18px;
+            height: 18px;
+
+            display: inline-block;
+            margin: 8px 8px;
+
+            text-align: center;
+
+            background-color: #FFFFFF;
+            opacity: 0.66;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 700;
+            line-height: 16px;
+            color: #000000;
+
+            cursor: pointer;
+        }
+
+            .numberButton:hover {
+                opacity: 1;
+                font-weight: 700;
+            }
+
+        .numberButtonOn {
+             background-color: #FFCC22;
+             font-weight: 700;
+             opacity: 1;
+             color: #000000;
+        }
+
+        #play {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+
+            display: inline-block;
+            margin: 5px 5px;
+
+            text-align: center;
+
+            background-color: #FFF;
+            opacity: 0.66;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 700;
+            line-height: 20px;
+            color: #000;
+
+            cursor: pointer;
+        }
+
+            #play:hover {
+                opacity: 1;
+                font-weight: 700;
+            }
+
+    </style>
+    <script>
+        var posterURLs = ["res/guardians_of_the_galaxy_vol_two.jpg",
+                          "res/alien_covenant.jpg",
+                          "res/king_arthur_legend_of_the_sword.jpg",
+                          "res/pirates_of_the_caribbean_dead_men_tell_no_tales.jpg",
+                          "res/wonder_woman.jpg"];
+        var posterLinks = ["http://www.imdb.com/title/tt3896198/?ref_=nv_sr_1",
+                           "http://www.imdb.com/title/tt2316204/?ref_=nv_sr_1",
+                           "http://www.imdb.com/title/tt1972591/?ref_=nv_sr_1",
+                           "http://www.imdb.com/title/tt1790809/?ref_=nv_sr_1",
+                           "http://www.imdb.com/title/tt0451279/?ref_=nv_sr_1"];
+        var descriptions = ["Guardians of the Galaxy Vol. 2 (2017)",
+                            "Alien: Covenant (2017)",
+                            "King Arthur: Legend of the Sword (2017)",
+                            "Pirates of the Caribbean: Dead Men Tell No Tales (2017)",
+                            "Wonder Woman (2017)"];
+
+        var QofPosters = 5;
+        var showingPoster = 0; // start with 0
+        var autoPlayFlag = false;
+        var autoPlay;
+
+        function control(c) {
+            numberButtons[showingPoster].classList.remove("numberButtonOn");
+            showingPoster = (showingPoster + QofPosters + c) % 5;
+            var numberButtonOnId = "poster".concat(showingPoster + 1);
+            document.getElementById(numberButtonOnId).classList.add("numberButtonOn");
+
+            poster.src = posterURLs[showingPoster];
+            poster.title = descriptions[showingPoster];
+            posterLink.href = posterLinks[showingPoster];
+        }
+
+        function clickNumberButton() {
+            numberButtons[showingPoster].classList.remove("numberButtonOn");
+            showingPoster = parseInt(this.id.substr(6)) - 1;
+            document.getElementById(this.id).classList.add("numberButtonOn");
+
+            poster.src = posterURLs[showingPoster];  
+            poster.title = descriptions[showingPoster];
+            posterLink.href = posterLinks[showingPoster];
+        }
+
+        function controlAutoPlay(a) {
+            play.innerHTML = a ? "||" : "►";
+
+            if (a) {
+                autoPlay = setInterval(function () { control(1) }, 2500);
+                autoPlayFlag = false;
+            } else {
+                clearInterval(autoPlay);
+                autoPlayFlag = true;
+            }
+        }
+
+        window.onload = function () {
+            // get elements
+            poster = document.getElementById("poster");
+            posterLink = document.getElementById("link");
+            numberButtons = document.getElementsByClassName("numberButton");
+            play = document.getElementById("play");
+
+            // set first poster with variable showingPoster
+            poster.src = posterURLs[showingPoster];
+            poster.title = descriptions[showingPoster];
+            document.getElementById("poster".concat(showingPoster + 1)).classList.add("numberButtonOn");
+            posterLink.href = posterLinks[showingPoster];
+
+            controlAutoPlay(autoPlayFlag);
+
+            document.getElementById("previous").addEventListener("click", function () { control(-1) });
+            document.getElementById("next").addEventListener("click", function () { control(1) });
+            for (var i = 0; i < numberButtons.length; i++) {
+                numberButtons[i].addEventListener("click", clickNumberButton);
+            }
+            document.getElementById("play").addEventListener("click", function () { controlAutoPlay(autoPlayFlag) });
+        }
+    </script>
+
+</head>
+<body>
+    <div id="carouselBox">
+        <div id="previous" class="controlButton"><img src="" /></div>
+        <div id="next" class="controlButton"><img src="" /></div>
+
+        <div><a id="link" target="_blank"><img id="poster" height="566"/></a></div>
+
+        <div id="poster1" class="numberButton">1</div>
+        <div id="poster2" class="numberButton">2</div>
+        <div id="poster3" class="numberButton">3</div>
+        <div id="poster4" class="numberButton">4</div>
+        <div id="poster5" class="numberButton">5</div>
+        <div id="play"></div>
+    </div>
+</body>
+</html>
