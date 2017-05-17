@@ -45,6 +45,8 @@
                 text-align: center;
                 color: #FFF;
                 font: 400 33px/66px Poppins, sans-serif;
+
+                cursor: pointer;
             }
 
             .html {

@@ -1,0 +1,54 @@
+var overStarImg = 'res/overStar.png', outStarImg = 'res/outStar.png';
+
+var stars = document.getElementsByClassName("star");
+var starImgs = document.getElementsByClassName("starImg");
+
+var finalStars = 0;
+
+function overStar(nthStarImg) {
+    var nthStar = parseInt(nthStarImg.substr(4));
+
+    for (var i = 0; i <= nthStar - 1; i++) {
+        starImgs[i].src = overStarImg;
+    }
+    for (var i = nthStar; i < 5; i++) {
+        starImgs[i].src = outStarImg;
+    }
+
+    document.getElementById("status").innerHTML = "評分中 ... " + nthStar + " 顆星";
+}
+
+function outStar() {
+    if (finalStars == 0) {
+        for (var i = 0; i < 5; i++) {
+            starImgs[i].src = outStarImg;
+        }
+        document.getElementById("status").innerHTML = "請給分";
+    } else {
+        for (var i = 0; i <= finalStars - 1; i++) {
+            starImgs[i].src = overStarImg;
+        }
+        for (var i = finalStars; i < 5; i++) {
+            starImgs[i].src = outStarImg;
+        }
+        document.getElementById("status").innerHTML = "你給 " + finalStars + " 顆星！";
+    }
+}
+
+function clickStar(nthStarImg) {
+    finalStars = parseInt(nthStarImg.substr(4));
+
+    document.getElementById("status").innerHTML = "你給 " + finalStars + " 顆星！";
+}
+
+window.onload = function () {
+    for (var i = 0; i < stars.length; i++) {
+        stars[i].addEventListener("mouseover", function () { overStar(this.id) });
+        stars[i].addEventListener("mouseout", outStar);
+        stars[i].addEventListener("click", function () { clickStar(this.id) });
+    }
+
+    for (var i = 0; i < starImgs.length; i++) {
+        starImgs[i].src = outStarImg;
+    }
+}

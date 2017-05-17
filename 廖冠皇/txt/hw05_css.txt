@@ -1,0 +1,39 @@
+*, body {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    box-sizing: border-box;
+}
+
+#hw03 {
+    width: 640px;
+    height: 640px;
+
+    padding: 100px 0;
+
+    text-align: center;
+
+    background-color: #000;
+}
+
+    #hw03 #starBox {
+        width: 640px;
+        height: 220px;
+
+        text-align: center;
+    }
+
+        #hw03 #starBox .star {
+            width: 120px;
+            height: 120px;
+
+            display: inline-block;
+            padding: 5px;
+
+            cursor: pointer;
+        }
+
+    #status {
+        font: 300 60px 'Noto Sans TC', sans-serif;
+        color: #FFF;
+    }
