@@ -1,4 +1,4 @@
-﻿window.addEventListener("load", indexOnload);
+﻿window.addEventListener("DOMContentLoaded", indexOnload);
 window.addEventListener("scroll", changeIndexClass);
 
 var indexes = document.getElementsByClassName("index");

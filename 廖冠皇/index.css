@@ -69,8 +69,10 @@
             }
 
         #pageBox .page .resultBox {
+            box-sizing: border-box;
             width: 70%;
             height: 988px;
+            border: 22px solid #FFF;
 
             display: inline-block;
             
@@ -78,7 +80,7 @@
         }
 
             #pageBox .page .resultBox .result {
-                margin-top: 132px;
+                margin-top: 176px;
 
                 border-style: none;
 

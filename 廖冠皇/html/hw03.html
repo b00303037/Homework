@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>hw03</title>
+    <link href="https://fonts.googleapis.com/earlyaccess/notosanstc.css" rel="stylesheet" />
+    <style>
+        *, body {
+            margin: 0;
+            padding: 0;
+            font-size: 0;
+            box-sizing: border-box;
+        }
+
+        #hw03 {
+            width: 640px;
+            height: 640px;
+
+            padding: 100px 0;
+
+            text-align: center;
+
+            background-color: #000;
+        }
+
+            #hw03 #starBox {
+                width: 640px;
+                height: 220px;
+
+                text-align: center;
+            }
+
+                #hw03 #starBox .star {
+                    width: 120px;
+                    height: 120px;
+
+                    display: inline-block;
+                    padding: 5px;
+
+                    cursor: pointer;
+                }
+
+            #status {
+                font: 300 60px 'Noto Sans TC', sans-serif;
+                color: #FFF;
+            }
+
+    </style>
+    <script>
+        var overStarImg = 'res/overStar.png', outStarImg = 'res/outStar.png';
+
+        var stars = document.getElementsByClassName("star");
+        var starImgs = document.getElementsByClassName("starImg");
+
+        var finalStars = 0;
+
+        function overStar(nthStarImg) {
+            var nthStar = parseInt(nthStarImg.substr(4));
+
+            for (var i = 0; i <= nthStar - 1; i++) {
+                starImgs[i].src = overStarImg;
+            }
+            for (var i = nthStar; i < 5; i++) {
+                starImgs[i].src = outStarImg;
+            }
+
+            document.getElementById("status").innerHTML = "評分中 ... " + nthStar + " 顆星";
+        }
+
+        function outStar() {
+            if (finalStars == 0) {
+                for (var i = 0; i < 5; i++) {
+                    starImgs[i].src = outStarImg;
+                }
+                document.getElementById("status").innerHTML = "請給分";
+            } else {
+                for (var i = 0; i <= finalStars - 1; i++) {
+                    starImgs[i].src = overStarImg;
+                }
+                for (var i = finalStars; i < 5; i++) {
+                    starImgs[i].src = outStarImg;
+                }
+                document.getElementById("status").innerHTML = "你給 " + finalStars + " 顆星！";
+            }
+        }
+
+        function clickStar(nthStarImg) {
+            finalStars = parseInt(nthStarImg.substr(4));
+
+            document.getElementById("status").innerHTML = "你給 " + finalStars + " 顆星！";
+        }
+
+        window.onload = function () {
+            for (var i = 0; i < stars.length; i++) {
+                stars[i].addEventListener("mouseover", function () { overStar(this.id) });
+                stars[i].addEventListener("mouseout", outStar);
+                stars[i].addEventListener("click", function () { clickStar(this.id) });
+            }
+
+            for (var i = 0; i < starImgs.length; i++) {
+                starImgs[i].src = outStarImg;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div id="hw03">
+        <div id="starBox">
+            <div class="star" id="star1"><img class="starImg" width="110" height="110" /></div>
+            <div class="star" id="star2"><img class="starImg" width="110" height="110" /></div>
+            <div class="star" id="star3"><img class="starImg" width="110" height="110" /></div>
+            <div class="star" id="star4"><img class="starImg" width="110" height="110" /></div>
+            <div class="star" id="star5"><img class="starImg" width="110" height="110" /></div>
+        </div>
+        <div>
+            <span id="status">請給分</span>
+        </div>
+    </div>
+
+</body>
+</html>

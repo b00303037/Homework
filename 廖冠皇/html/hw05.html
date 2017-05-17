@@ -2,57 +2,61 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Select Date</title>
+    <title>hw05</title>
     <link href="https://fonts.googleapis.com/earlyaccess/notosanstc.css" rel="stylesheet" />
     <style>
-        * {
+        *, body {
+            margin: 0;
+            padding: 0;
+            font: 100 0px 'Noto Sans TC', sans-serif;
+            color: #000;
             box-sizing: border-box;
-            font-family: 'Noto Sans TC', sans-serif;
-            font-weight: 100;
         }
 
-        #box {
-            width: 600px;
-            height: 600px;
-
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-top: -300px;
-            margin-left: -300px;
-
-            padding: 0 30px;
-
-            background-color: #EEEEEE;
+        #hw05 {
+            width: 640px;
+            height: 640px;
         }
 
-            h1 {
-                font-size: 60px;
-                
-                margin-bottom: 30px;
+        #selectBox {
+            width: 640px;
+            height: 320px;
+
+            padding: 11px 22px;
+
+            background-color: #FFF; 
+        }
+
+            #selectBox h1 {
+                margin-bottom: 11px;
+                font-size: 66px;
+            }
+
+            #selectBox form, #selectBox form select {
+                font-size: 24px;
             }
 
         #infoBox {
-            width: 600px;
-            height: 300px;
+            width: 640px;
+            height: 320px;
 
-            position: absolute;
-            left: 0;
-            bottom: 0;
+            padding: 11px 22px;
 
-            padding: 0 30px;
-
-            background-color: #CCCCCC;
+            background-color: #BBB;
         }
 
-        .info {
-            font-size: 24px;
-        }
+            #infoBox h1 {
+                margin-bottom: 11px;
+                font-size: 66px;
+            }
 
+            #infoBox #info {
+                font-size: 24px;
+            }
     </style>
     <script>
         var minYear = 2010,
-			maxYear = 2020;
+	        maxYear = 2020;
 
         function createYearOption() {
             var years = "";
@@ -61,7 +65,7 @@
                 years = years.concat("<option>" + i + "</option>");
             }
 
-            document.getElementById("year").innerHTML = years;
+            document.getElementById("yearSelect").innerHTML = years;
         }
 
         function createMonthOption() {
@@ -71,15 +75,15 @@
                 months = months.concat("<option>" + i + "</option>");
             }
 
-            document.getElementById("month").innerHTML = months;
+            document.getElementById("monthSelect").innerHTML = months;
         }
 
         function createDateOption() {
-            var yearValue = document.getElementById("year").value;
-            var monthValue = document.getElementById("month").value;
+            var yearValue = document.getElementById("yearSelect").value;
+            var monthValue = document.getElementById("monthSelect").value;
 
             var dates = checkDates(yearValue, monthValue);
-            document.getElementById("date").innerHTML = dates;
+            document.getElementById("dateSelect").innerHTML = dates;
         }
 
         function checkDates(yearValue, monthValue) {
@@ -97,9 +101,9 @@
         }
 
         function showInfo() {
-            var yearValue = document.getElementById("year").value;
-            var monthValue = document.getElementById("month").value;
-            var dateValue = document.getElementById("date").value;
+            var yearValue = document.getElementById("yearSelect").value;
+            var monthValue = document.getElementById("monthSelect").value;
+            var dateValue = document.getElementById("dateSelect").value;
 
             document.getElementById("info").innerHTML = "您選擇的日期是: " + yearValue + " 年 " + monthValue + " 月 " + dateValue + " 日";
         }
@@ -110,25 +114,27 @@
             createDateOption();
             showInfo();
 
-            document.getElementById("year").addEventListener("change", createDateOption);
-            document.getElementById("month").addEventListener("change", createDateOption);
+            document.getElementById("yearSelect").addEventListener("change", createDateOption);
+            document.getElementById("monthSelect").addEventListener("change", createDateOption);
 
             var selects = document.getElementsByTagName("select");
             for (var i = 0; i < selects.length; i++) {
                 selects[i].addEventListener("change", showInfo);
             }
         }
-	</script>
 
+    </script>
 </head>
 <body>
-    <div id="box">
-        <h1>Welcome</h1>
-        <form>
-            <select id="year"></select>年
-            <select id="month"></select>月
-            <select id="date"></select>日
-        </form>
+    <div id="hw05">
+        <div id="selectBox">
+            <h1>Welcome</h1>
+            <form>
+                <select id="yearSelect"></select>年
+                <select id="monthSelect"></select>月
+                <select id="dateSelect"></select>日
+            </form>
+        </div>
         <div id="infoBox">
             <h1>Information</h1>
             <span id="info" class ="info"></span>
