@@ -17,6 +17,6 @@
         </div>
     </div>
     <div>
-        <span id="status">½Ðµ¹¤À</span>
+        <span id="status">è«‹çµ¦åˆ†</span>
     </div>
 </div>

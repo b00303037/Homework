@@ -2,17 +2,15 @@
 window.addEventListener("scroll", changeIndexClass);
 
 var indexes = document.getElementsByClassName("index");
-var htmlClass = document.getElementsByClassName("html");
-var cssClass = document.getElementsByClassName("css");
-var javascriptClass = document.getElementsByClassName("javascript");
+var codeIndexes = document.getElementsByClassName("codeIndex");
 
 function indexOnload() {
     for (var i = 0; i < indexes.length; i++) {
         indexes[i].addEventListener("click", function () { scrollToPageN(event) });
     }
 
-    for (var j = 0; j < htmlClass.length; j++) {
-        htmlClass[j].addEventListener("click", function () { showTxt(event) });
+    for (var j = 0; j < codeIndexes.length; j++) {
+        codeIndexes[j].addEventListener("click", function () { showTxt(event) });
     }
 }
 
@@ -23,13 +21,15 @@ function scrollToPageN(e) {
     document.getElementById(pageN).scrollIntoView({ behavior: 'smooth' });
 }
 
-/*
 function showTxt(e) {
     e = event || window.event;
-    var codeN = "code" + e.currentTarget.id.substr(6);
-    alert(e.currentTarget);
+    var Ncode = e.target.id;
+    var N = Ncode.substr(1, 1);
+    var codeN = "code" + N;
+    var txt = "txt/" + Ncode + ".txt";
+
+    document.getElementById(codeN).src = txt;
 }
-*/
 
 function changeIndexClass() {
     for (var i = 1; i <= 5; i++) {

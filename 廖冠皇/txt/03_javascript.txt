@@ -15,7 +15,7 @@ function overStar(nthStarImg) {
         starImgs[i].src = outStarImg;
     }
 
-    document.getElementById("status").innerHTML = "µû¤À¤¤ ... " + nthStar + " Áû¬P";
+    document.getElementById("status").innerHTML = "è©•åˆ†ä¸­ ... " + nthStar + " é¡†æ˜Ÿ";
 }
 
 function outStar() {
@@ -23,7 +23,7 @@ function outStar() {
         for (var i = 0; i < 5; i++) {
             starImgs[i].src = outStarImg;
         }
-        document.getElementById("status").innerHTML = "½Ðµ¹¤À";
+        document.getElementById("status").innerHTML = "è«‹çµ¦åˆ†";
     } else {
         for (var i = 0; i <= finalStars - 1; i++) {
             starImgs[i].src = overStarImg;
@@ -31,14 +31,14 @@ function outStar() {
         for (var i = finalStars; i < 5; i++) {
             starImgs[i].src = outStarImg;
         }
-        document.getElementById("status").innerHTML = "§Aµ¹ " + finalStars + " Áû¬P¡I";
+        document.getElementById("status").innerHTML = "ä½ çµ¦ " + finalStars + " é¡†æ˜Ÿï¼";
     }
 }
 
 function clickStar(nthStarImg) {
     finalStars = parseInt(nthStarImg.substr(4));
 
-    document.getElementById("status").innerHTML = "§Aµ¹ " + finalStars + " Áû¬P¡I";
+    document.getElementById("status").innerHTML = "ä½ çµ¦ " + finalStars + " é¡†æ˜Ÿï¼";
 }
 
 window.onload = function () {

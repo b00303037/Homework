@@ -18,7 +18,7 @@
     }
 
         #pageBox .page .codeBox {
-            width: 30%;
+            width: 40%;
             height: 988px;
 
             display: inline-block;
@@ -70,9 +70,16 @@
                 background-color: #FFFFFF;
             }
 
+            #pageBox .page .codeBox .code iframe {
+                width: 100%;
+                height: 790px;
+
+                border-style: none;
+            }
+
         #pageBox .page .resultBox {
             box-sizing: border-box;
-            width: 70%;
+            width: 60%;
             height: 988px;
             border: 22px solid #FFF;
 
@@ -82,7 +89,10 @@
         }
 
             #pageBox .page .resultBox .result {
-                margin-top: 176px;
+                width: 640px;
+                height: 640px;
+
+                margin-top: 154px;
 
                 border-style: none;
 
