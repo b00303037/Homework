@@ -5,26 +5,26 @@
     <div id="formBox">
         <form>
             <div class="inputBox">
-                <label for="nameInput">©m¶W</label>
-                <input type="text" id="nameInput" name="name" placeholder="Ω–øÈ§J©m¶W" />
+                <label for="nameInput">ÂßìÂêç</label>
+                <input type="text" id="nameInput" name="name" placeholder="Ë´ãËº∏ÂÖ•ÂßìÂêç" />
                 <span id="nameCheckReslut"></span>
             </div>
 
             <div class="inputBox">
-                <label for="passwordInput">±KΩX</label>
-                <input type="password" id="passwordInput" name="password" placeholder="Ω–øÈ§J±KΩX" />
+                <label for="passwordInput">ÂØÜÁ¢º</label>
+                <input type="password" id="passwordInput" name="password" placeholder="Ë´ãËº∏ÂÖ•ÂØÜÁ¢º" />
                 <span id="passwordCheckReslut"></span>
             </div>
 
             <div class="inputBox">
-                <label for="dateInput">§È¥¡</label>
+                <label for="dateInput">Êó•Êúü</label>
                 <input type="text" id="dateInput" name="date" maxlength="10" placeholder="" />
                 <span id="dateCheckReslut"></span>
             </div>
 
             <div class = "submitBox">
-                <input type = "submit" value = "∞e•X" />
-                <input type = "reset" id = "reset" value = "≤M∞£" />
+                <input type = "submit" value = "ÈÄÅÂá∫" />
+                <input type = "reset" id = "reset" value = "Ê∏ÖÈô§" />
             </div>
         </form>
     </div>

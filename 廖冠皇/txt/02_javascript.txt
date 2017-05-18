@@ -3,18 +3,18 @@ var wrongImg = "'res/wrong.png'";
 
 function checkName() {
     var nameValue = document.getElementById("nameInput").value;
-    nameCheckReslut.innerHTML = "<img src = " + correctImg + "/>¥¿½T";
+    nameCheckReslut.innerHTML = "<img src = " + correctImg + "/>æ­£ç¢º";
     nameCheckReslut.classList.add("wrongInput");
 
     if (nameValue.length == 0) {
-        nameCheckReslut.innerHTML = "<img src = " + wrongImg + "/>³o¸Ì¥²¶·¶ñ¤J¸ê®Æ";
+        nameCheckReslut.innerHTML = "<img src = " + wrongImg + "/>é€™è£¡å¿…é ˆå¡«å…¥è³‡æ–™";
     } else if (nameValue.length < 2) {
-        nameCheckReslut.innerHTML = "<img src = " + wrongImg + "/>©m¦W¦Ü¤Ö­n¦³ 2 ­Ó¦r¤¸";
+        nameCheckReslut.innerHTML = "<img src = " + wrongImg + "/>å§“åè‡³å°‘è¦æœ‰ 2 å€‹å­—å…ƒ";
     } else {
         var error = false;
         for (var i = 0; i < nameValue.length; i++) {
             if (nameValue.charCodeAt(i) < 0x4E00 || nameValue.charCodeAt(i) > 0x9FBB) {
-                nameCheckReslut.innerHTML = "<img src = " + wrongImg + "/>©m¦W¥²¶·¥ş³¡¬°¤¤¤å¦r";
+                nameCheckReslut.innerHTML = "<img src = " + wrongImg + "/>å§“åå¿…é ˆå…¨éƒ¨ç‚ºä¸­æ–‡å­—";
                 error = true;
                 break;
             }
@@ -27,28 +27,28 @@ function checkName() {
 
 function checkPassword() {
     var passwordValue = document.getElementById("passwordInput").value;
-    passwordCheckReslut.innerHTML = "<img src = " + correctImg + "/>¥¿½T";
+    passwordCheckReslut.innerHTML = "<img src = " + correctImg + "/>æ­£ç¢º";
     passwordCheckReslut.classList.add("wrongInput");
 
     var regExpN = /[0-9]/,
 		regExpL = /[a-z]/i,
 		regExpC = /[!@#$%^&*]/;
     if (passwordValue.length == 0) {
-        passwordCheckReslut.innerHTML = "<img src = " + wrongImg + "/>³o¸Ì¥²¶·¶ñ¤J¸ê®Æ";
+        passwordCheckReslut.innerHTML = "<img src = " + wrongImg + "/>é€™è£¡å¿…é ˆå¡«å…¥è³‡æ–™";
     } else if (passwordValue.length < 6) {
-        passwordCheckReslut.innerHTML = "<img src = " + wrongImg + "/>±K½X¦Ü¤Ö­n¦³ 6 ­Ó¦r¤¸";
+        passwordCheckReslut.innerHTML = "<img src = " + wrongImg + "/>å¯†ç¢¼è‡³å°‘è¦æœ‰ 6 å€‹å­—å…ƒ";
     } else {
         if (passwordValue.match(regExpN) != null && passwordValue.match(regExpL) != null && passwordValue.match(regExpC) != null) {
             passwordCheckReslut.classList.remove("wrongInput");
         } else {
-            passwordCheckReslut.innerHTML = "<img src = " + wrongImg + "/>±K½X¥²¶·¥]§t­^¼Æ¦r¤Î¯S®í¦r¤¸!@#$%^&*";
+            passwordCheckReslut.innerHTML = "<img src = " + wrongImg + "/>å¯†ç¢¼å¿…é ˆåŒ…å«è‹±æ•¸å­—åŠç‰¹æ®Šå­—å…ƒ!@#$%^&*";
         }
     }
 }
 
 function checkDate() {
     var dateValue = document.getElementById("dateInput").value;
-    dateCheckReslut.innerHTML = "<img src = " + correctImg + "/>¥¿½T";
+    dateCheckReslut.innerHTML = "<img src = " + correctImg + "/>æ­£ç¢º";
     dateCheckReslut.classList.add("wrongInput");
 
     var regExp = /[0-9]{4}\/[0-9]{1,2}\/[0-9]{1,2}/;
@@ -59,9 +59,9 @@ function checkDate() {
     var dayOfDateValues = dateValues[2];
 
     if (dateValue.length == 0) {
-        dateCheckReslut.innerHTML = "<img src = " + wrongImg + "/>³o¸Ì¥²¶·¶ñ¤J¸ê®Æ";
+        dateCheckReslut.innerHTML = "<img src = " + wrongImg + "/>é€™è£¡å¿…é ˆå¡«å…¥è³‡æ–™";
     } else if (!regExp.test(dateValue) || date == "Invalid Date" || dayOfDate != dayOfDateValues) {
-        dateCheckReslut.innerHTML = "<img src = " + wrongImg + "/>¤é´Á¦ü¥G¤£¥¿½T¡H½Ğ¨Ì·Ó®æ¦¡¶ñ¤J¦X²z¤é´Á";
+        dateCheckReslut.innerHTML = "<img src = " + wrongImg + "/>æ—¥æœŸä¼¼ä¹ä¸æ­£ç¢ºï¼Ÿè«‹ä¾ç…§æ ¼å¼å¡«å…¥åˆç†æ—¥æœŸ";
     } else {
         dateCheckReslut.classList.remove("wrongInput");
     }
