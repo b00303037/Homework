@@ -1,4 +1,4 @@
-﻿window.addEventListener("DOMContentLoaded", indexOnload);
+﻿window.addEventListener("load", indexOnload);
 window.addEventListener("scroll", changeIndexClass);
 
 var indexes = document.getElementsByClassName("index");
@@ -6,8 +6,10 @@ var codeIndexes = document.getElementsByClassName("codeIndex");
 var htmls = document.getElementsByClassName("html");
 
 function indexOnload() {
+    changeIndexClass();
+
     for (var i = 0; i < indexes.length; i++) {
-        indexes[i].addEventListener("click", function () { scrollToPageN(event) });
+        indexes[i].addEventListener("click", function () { runScroll(event) });
     }
 
     for (var j = 0; j < codeIndexes.length; j++) {
@@ -21,11 +23,23 @@ function indexOnload() {
     }
 }
 
-function scrollToPageN(e) {
+function runScroll(e) {
     e = event || window.event;
-    var pageN = "page" + e.target.id.substr(5);
+    var N = e.target.id.substr(5);
+    
+    scrollTo(document.body, 988 * N, 300);
+}
 
-    document.getElementById(pageN).scrollIntoView({ behavior: 'smooth' });
+function scrollTo(element, to, duration) {
+    if (duration <= 0) return;
+    var difference = to - element.scrollTop;
+    var perTick = difference / duration * 10;
+
+    setTimeout(function () {
+        element.scrollTop = element.scrollTop + perTick;
+        if (element.scrollTop == to) return;
+        scrollTo(element, to, duration - 10);
+    }, 10);
 }
 
 function showTxt(e) {
@@ -39,14 +53,15 @@ function showTxt(e) {
 }
 
 function changeIndexClass() {
-    for (var i = 1; i <= 5; i++) {
+    for (var i = 0; i <= 5; i++) {
         var min = 900 + 988 * (i - 1), max = 900 + 988 * i;
+        if (i == 0) { min += 88; max += 88; }
         var indexN = "index" + i;
         if ((document.body.scrollTop >= min && document.body.scrollTop < max) ||
             (document.documentElement.scrollTop >= min && document.body.scrollTop < max)) {
-            document.getElementById(indexN).className = "indexOn";
+            document.getElementById(indexN).classList.add("indexOn");
         } else {
-            document.getElementById(indexN).className = "index";
+            document.getElementById(indexN).classList.remove("indexOn");
         }
     }
 }

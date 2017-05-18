@@ -17,6 +17,27 @@
 		background-color: #000;
     }
 
+        #cover {
+            width: 100%;
+            height: 600px;
+
+            margin-top: 88px;
+            box-sizing: border-box;
+
+            text-align: center;
+
+            background-color: #0DA;
+        }
+
+            #cover .coverImg {
+                height: 400px;
+
+                margin: 100px 50px;
+                box-sizing: border-box;
+
+                display: inline-block;
+            }
+
         #pageBox .page .codeBox {
             width: 40%;
             height: 988px;
@@ -157,15 +178,6 @@
                 }
 
                 .indexOn {
-                    width: 66px;
-
-                    display: inline-block;
-                    margin: 11px;
-
-                    text-align: center;
-                    font: 400 55px/66px Poppins, sans-serif;
                     color: #000000;
                     border-bottom: 4px solid #FFAA33;
-
-                    cursor: pointer;
                 }
