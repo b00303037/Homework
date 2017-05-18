@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>hw01</title>
+    <link href="https://fonts.googleapis.com/earlyaccess/notosanstc.css" rel="stylesheet" />
+    <style>
+        *, body {
+            margin: 0;
+            padding: 0;
+            font: 100 0px 'Noto Sans TC', sans-serif;
+            box-sizing: border-box;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        #title {
+            height: 120px;
+
+            font-size: 66px;
+            font-weight: 400;
+            color: #FFF;
+
+            background-color: #000;
+        }
+
+        td {
+            width: 80px;
+
+            border-style: none;
+            outline-style: none;
+
+            font-size: 17px;
+            text-align: center;
+            line-height: 44px;
+        }
+
+        td:nth-child(2n+1) {
+            background-color: #FFF;
+        }
+
+        td:nth-child(2n) {
+            background-color: #CCC;
+        }
+    </style>
+    <script>
+        document.write("<table><tr>");
+        document.write("<td id='title' colspan='8'>9 * 9 Table</td>");
+        document.write("</tr><tr>");
+        for (var i = 2; i < 10; i++) {
+            document.write("<td>");
+
+            for (var j = 1; j < 10; j++) {
+                if (i * j < 10) 
+                    document.write(i + "*" + j + " = 0" + i * j + "<br>");
+                else
+                    document.write(i + "*" + j + " = " + i * j + "<br>");
+            }
+            j = 1;
+            document.write("</td>");
+        }
+        document.write("</tr></table>");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<div id="hw02">
+    <div id="headerBox">
+        <h1>Form Check</h1>
+    </div>
+    <div id="formBox">
+        <form>
+            <div class="inputBox">
+                <label for="nameInput">姓名</label>
+                <input type="text" id="nameInput" name="name" placeholder="請輸入姓名" />
+                <span id="nameCheckReslut"></span>
+            </div>
+
+            <div class="inputBox">
+                <label for="passwordInput">密碼</label>
+                <input type="password" id="passwordInput" name="password" placeholder="請輸入密碼" />
+                <span id="passwordCheckReslut"></span>
+            </div>
+
+            <div class="inputBox">
+                <label for="dateInput">日期</label>
+                <input type="text" id="dateInput" name="date" maxlength="10" placeholder="" />
+                <span id="dateCheckReslut"></span>
+            </div>
+
+            <div class = "submitBox">
+                <input type = "submit" value = "送出" />
+                <input type = "reset" id = "reset" value = "清除" />
+            </div>
+        </form>
+    </div>
+</div>
