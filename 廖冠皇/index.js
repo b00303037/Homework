@@ -55,7 +55,7 @@ function showTxt(e) {
 function changeIndexClass() {
     for (var i = 0; i <= 5; i++) {
         var min = 900 + 988 * (i - 1), max = 900 + 988 * i;
-        if (i == 0) { min += 88; max += 88; }
+        if (i == 0) { min += 88 }
         var indexN = "index" + i;
         if ((document.body.scrollTop >= min && document.body.scrollTop < max) ||
             (document.documentElement.scrollTop >= min && document.body.scrollTop < max)) {
