@@ -1,0 +1,48 @@
+*, body {
+    margin: 0;
+    padding: 0;
+    font: 100 0px 'Noto Sans TC', sans-serif;
+    color: #000;
+    box-sizing: border-box;
+}
+
+#hw05 {
+    width: 640px;
+    height: 640px;
+}
+
+#selectBox {
+    width: 640px;
+    height: 320px;
+
+    padding: 11px 22px;
+
+    background-color: #FFF; 
+}
+
+    #selectBox h1 {
+        margin-bottom: 11px;
+        font-size: 66px;
+    }
+
+    #selectBox form, #selectBox form select {
+        font-size: 24px;
+    }
+
+#infoBox {
+    width: 640px;
+    height: 320px;
+
+    padding: 11px 22px;
+
+    background-color: #BBB;
+}
+
+    #infoBox h1 {
+        margin-bottom: 11px;
+        font-size: 66px;
+    }
+
+    #infoBox #info {
+        font-size: 24px;
+    }

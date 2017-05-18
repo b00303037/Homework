@@ -3,6 +3,7 @@ window.addEventListener("scroll", changeIndexClass);
 
 var indexes = document.getElementsByClassName("index");
 var codeIndexes = document.getElementsByClassName("codeIndex");
+var htmls = document.getElementsByClassName("html");
 
 function indexOnload() {
     for (var i = 0; i < indexes.length; i++) {
@@ -11,6 +12,12 @@ function indexOnload() {
 
     for (var j = 0; j < codeIndexes.length; j++) {
         codeIndexes[j].addEventListener("click", function () { showTxt(event) });
+    }
+
+    for (var k = 0; k < htmls.length; k++) {
+        var codeN = "code" + (k + 1);
+        var txt = "txt/0" + (k + 1) + "_html.txt";
+        document.getElementById(codeN).src = txt;
     }
 }
 

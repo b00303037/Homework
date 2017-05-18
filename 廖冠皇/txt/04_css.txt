@@ -1,0 +1,93 @@
+*, body {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+}
+
+#hw04 {
+    width: 640px;
+    height: 640px;
+
+    position: relative;
+    text-align: center;
+}
+
+    .controlButton {
+        width: 66px;
+        height: 66px;
+        border-radius: 50%;
+
+        position: absolute;
+
+        opacity: 0.66;
+        
+    }
+
+    .controlButton:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    #prevButton {
+        top: 267px;
+        left: 32px;
+    }
+
+    #nextButton {
+        top: 267px;
+        right: 32px;
+    }
+
+    #poster {
+        margin-top: 0;
+    }
+
+    .numButton {
+        width: 22px;
+        height: 22px;
+
+        display: inline-block;
+        margin: 9px;
+
+        text-align: center;
+
+        background-color: #BBB;
+        font: 700 18px/22px 'Noto Sans TC', sans-serif;
+        color: #000;
+
+        cursor: pointer;
+    }
+
+    .numButton:hover {
+        background-color: #FFF;
+    }
+
+    .numButtonOn {
+         background-color: #FFC952;
+    }
+
+#playbutton {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+
+    display: inline;
+    margin: 7px;
+
+    text-align: center;
+
+    background-color: #FF7473;
+    font: 700 18px/26px 'Noto Sans TC', sans-serif;
+    color: #000;
+
+    cursor: pointer;
+}
+
+#playbuttonImg {
+    position: relative;
+    top: 5px;
+}
+
+#playbutton:hover {
+    background-color: #FFF;
+}

@@ -1,0 +1,14 @@
+<div id="hw05">
+    <div id="selectBox">
+        <h1>Welcome</h1>
+        <form>
+            <select id="yearSelect"></select>年
+            <select id="monthSelect"></select>月
+            <select id="dateSelect"></select>日
+        </form>
+    </div>
+    <div id="infoBox">
+        <h1>Information</h1>
+        <span id="info" class ="info"></span>
+    </div>
+</div>

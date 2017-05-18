@@ -1,0 +1,23 @@
+<div id="hw04">
+    <div id="prevButton" class="controlButton">
+        <img src="res/previous.png" width="66px" height="66px" />
+    </div>
+    <div id="nextButton" class="controlButton">
+        <img src="res/next.png" width="66px" height="66px" />
+    </div>
+
+    <div>
+        <a id="link" target="_blank">
+            <img id="poster" height="600"/>
+        </a>
+    </div>
+
+    <div id="numButton1" class="numButton">1</div>
+    <div id="numButton2" class="numButton">2</div>
+    <div id="numButton3" class="numButton">3</div>
+    <div id="numButton4" class="numButton">4</div>
+    <div id="numButton5" class="numButton">5</div>
+    <div id="playbutton">
+        <img id="playbuttonImg" width="26" height="26" />
+    </div>
+</div>

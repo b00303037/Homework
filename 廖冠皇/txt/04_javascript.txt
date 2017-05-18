@@ -1,0 +1,74 @@
+var posterURLs = ["res/guardians_of_the_galaxy_vol_two.jpg",
+                  "res/alien_covenant.jpg",
+                  "res/king_arthur_legend_of_the_sword.jpg",
+                  "res/pirates_of_the_caribbean_dead_men_tell_no_tales.jpg",
+                  "res/wonder_woman.jpg"];
+var links = ["http://www.imdb.com/title/tt3896198/?ref_=nv_sr_1",
+             "http://www.imdb.com/title/tt2316204/?ref_=nv_sr_1",
+             "http://www.imdb.com/title/tt1972591/?ref_=nv_sr_1",
+             "http://www.imdb.com/title/tt1790809/?ref_=nv_sr_1",
+             "http://www.imdb.com/title/tt0451279/?ref_=nv_sr_1"];
+var posterTitles = ["Guardians of the Galaxy Vol. 2 (2017)",
+                    "Alien: Covenant (2017)",
+                    "King Arthur: Legend of the Sword (2017)",
+                    "Pirates of the Caribbean: Dead Men Tell No Tales (2017)",
+                    "Wonder Woman (2017)"];
+
+var QofPosters = 5;
+var showingPoster = 0; // start with 0
+var autoPlayFlag = false;
+var autoPlay;
+
+function controlButton(c) {
+    numButtons[showingPoster].classList.remove("numButtonOn");
+    showingPoster = (showingPoster + QofPosters + c) % QofPosters;
+    var numButtonOnId = "numButton".concat(showingPoster + 1);
+    document.getElementById(numButtonOnId).classList.add("numButtonOn");
+
+    poster.src = posterURLs[showingPoster];
+    poster.title = posterTitles[showingPoster];
+    link.href = links[showingPoster];
+}
+
+function clickNumButton() {
+    numButtons[showingPoster].classList.remove("numButtonOn");
+    showingPoster = parseInt(this.id.substr(9)) - 1;
+    this.classList.add("numButtonOn");
+
+    poster.src = posterURLs[showingPoster];
+    poster.title = posterTitles[showingPoster];
+    link.href = links[showingPoster];
+}
+
+function controlAutoPlay(a) {
+    playbuttonImg.src = a ? "res/pause.png" : "res/play.png";
+
+    if (a) {
+        autoPlay = setInterval(function () { controlButton(1) }, 2500);
+        autoPlayFlag = false;
+    } else {
+        clearInterval(autoPlay);
+        autoPlayFlag = true;
+    }
+}
+
+window.onload = function () {
+    poster = document.getElementById("poster");
+    link = document.getElementById("link");
+    numButtons = document.getElementsByClassName("numButton");
+    playbuttonImg = document.getElementById("playbuttonImg");
+
+    poster.src = posterURLs[showingPoster];
+    poster.title = posterTitles[showingPoster];
+    link.href = links[showingPoster];
+    document.getElementById("numButton".concat(showingPoster + 1)).classList.add("numButtonOn");
+
+    controlAutoPlay(autoPlayFlag);
+
+    document.getElementById("prevButton").addEventListener("click", function () { controlButton(-1) });
+    document.getElementById("nextButton").addEventListener("click", function () { controlButton(1) });
+    for (var i = 0; i < numButtons.length; i++) {
+        numButtons[i].addEventListener("click", clickNumButton);
+    }
+    playbutton.addEventListener("click", function () { controlAutoPlay(autoPlayFlag) });
+}
