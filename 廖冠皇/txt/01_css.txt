@@ -1,0 +1,39 @@
+*, body {
+    margin: 0;
+    padding: 0;
+    font: 100 0px 'Noto Sans TC', sans-serif;
+    box-sizing: border-box;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+#title {
+    height: 120px;
+
+    font-size: 66px;
+    font-weight: 400;
+    color: #FFF;
+
+    background-color: #000;
+}
+
+td {
+    width: 80px;
+
+    border-style: none;
+    outline-style: none;
+
+    font-size: 17px;
+    text-align: center;
+    line-height: 44px;
+}
+
+td:nth-child(2n+1) {
+    background-color: #FFF;
+}
+
+td:nth-child(2n) {
+    background-color: #CCC;
+}
