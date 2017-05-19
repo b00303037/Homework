@@ -26,8 +26,10 @@ function indexOnload() {
 function runScroll(e) {
     e = event || window.event;
     var N = e.target.id.substr(5);
+
+    var to = (N == 0) ? 0 : (988 * N + 88);
     
-    scrollTo(document.body, 988 * N, 300);
+    scrollTo(document.body, to, 300);
 }
 
 function scrollTo(element, to, duration) {
@@ -54,8 +56,8 @@ function showTxt(e) {
 
 function changeIndexClass() {
     for (var i = 0; i <= 5; i++) {
-        var min = 900 + 988 * (i - 1), max = 900 + 988 * i;
-        if (i == 0) { min += 88 }
+        var min = 988 * i, max = 988 * (i + 1);
+        
         var indexN = "index" + i;
         if ((document.body.scrollTop >= min && document.body.scrollTop < max) ||
             (document.documentElement.scrollTop >= min && document.body.scrollTop < max)) {
